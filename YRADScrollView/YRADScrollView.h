@@ -36,5 +36,4 @@
 -(void)adScrollView:(YRADScrollView*)adScrollView didClickedAtPage:(NSInteger)pageIndex;
 -(void)adScrollView:(YRADScrollView*)adScrollView didScrollToPage:(NSInteger)pageIndex;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView;
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;
 @end

@@ -12,7 +12,7 @@
     NSMutableSet *_reusableViewSet;
     NSMutableDictionary *_onShowViewDictionary;
     UIScrollView *_scrollView;
-    
+
     NSInteger _totalPageNumber;
     NSInteger _positionIndex;
 }
@@ -31,15 +31,15 @@
         _reusableViewSet = [[NSMutableSet alloc]initWithCapacity:4];
         _onShowViewDictionary = [[NSMutableDictionary alloc]initWithCapacity:3];
         _cycleEnabled = true;
-        
+
         _scrollView = [[UIScrollView alloc]initWithFrame:self.bounds];
         _scrollView.pagingEnabled = true;
         _scrollView.delegate = self;
         _scrollView.showsHorizontalScrollIndicator = false;
         _scrollView.showsVerticalScrollIndicator = false;
         [self addSubview:_scrollView];
-        
-        
+
+
         UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
         [_scrollView addGestureRecognizer:gesture];
     }
@@ -89,7 +89,7 @@
         }
     }
     [_onShowViewDictionary removeAllObjects];
-    
+
     if (_cycleEnabled) {
         _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width*2000*_totalPageNumber, 0);
         _positionIndex = 1000*_totalPageNumber+self.currentPage;
@@ -109,8 +109,8 @@
     [self prepareViewAtPositionIndex:positionIndex];
     [self prepareViewAtPositionIndex:positionIndex-1];
     [self prepareViewAtPositionIndex:positionIndex+1];
-    
-    
+
+
     NSArray *allKeyArray = _onShowViewDictionary.allKeys;
     for (NSInteger i=allKeyArray.count-1;i>=0;i--) {
         NSNumber *key = [allKeyArray objectAtIndex:i];
@@ -178,8 +178,7 @@
         [self setPageToPositionIndex:_positionIndex];
     }
 }
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    [self.delegate scrollViewDidScroll:scrollView];    
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{  
 }
 
 @end
