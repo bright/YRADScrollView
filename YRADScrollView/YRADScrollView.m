@@ -160,6 +160,7 @@
     if (_totalPageNumber==0) {
         return;
     }
+    [self.delegate scrollViewDidScroll:scrollView];
     CGFloat pageWidth = _scrollView.frame.size.width;
     NSInteger page = (_scrollView.contentOffset.x/pageWidth) + 0.5;
     if (page!=_positionIndex) {
@@ -178,7 +179,7 @@
     }
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    
+    [self.delegate scrollViewDidScroll:scrollView];    
 }
 
 @end
